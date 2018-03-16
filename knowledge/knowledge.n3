@@ -1,0 +1,12 @@
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+
+#Consider there is a conflict between medication:Pramipexol and surgery:surgery_colon_cancer
+{		
+	?patient gps:alert {medication:Pramipexol gps:conflict surgery:surgery_colon_cancer.}.
+} <=
+{
+	?patient gps:medication medication:Pramipexol.
+	?patient gps:surgery surgery:surgery_colon_cancer.
+}.

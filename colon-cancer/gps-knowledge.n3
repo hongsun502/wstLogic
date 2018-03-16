@@ -1,0 +1,107 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+prefix sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+
+#preconditions that allows to take surgery.
+
+{
+	?patient  care:surgery_colon_cancer_precondition true .
+}<={
+	?patient a  care:Patient. 
+	?patient  care:diagnosis sct:363406005.
+	?patient  care:diagnosis sct:363351006.
+	?patient  care:tnm_t ?t_value .
+	?t_value math:lessThan 3 .
+}.
+
+{
+	?patient  care:surgery_colon_cancer_precondition true .
+}<={
+	?patient a  care:Patient. 
+	?patient  care:diagnosis sct:363406005.
+	?patient  care:diagnosis sct:363351006.
+	?patient  care:tnm_t ?t_value .
+	?t_value math:greaterThan 2 .
+#	?patient  care:taken action:Neoadjuvant_chemoradiotherapy.
+}.
+
+{
+	?patient  care:surgery_colon_cancer_precondition true .
+}<={
+	?patient a  care:Patient. 
+	?patient  care:diagnosis sct:363406005.
+	?patient  care:diagnosis sct:363351006.
+	?patient  care:tnm_t ?t_value .
+	?t_value math:greaterThan 2 .
+	?scope e:fail {?patient  care:taken action:Neoadjuvant_chemoradiotherapy.}.
+	?patient  care:blocking_colon true .
+}.
+
+
+###The following backward rules calculate the post surgery relapse risk after surgery for different situations.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.01 . 
+} <= {
+	?patient  care:tnm_t 1 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.04 . 
+} <= {
+	?patient  care:tnm_t 2 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.06 . 
+} <= {
+	?patient  care:taken action:Neoadjuvant_chemoradiotherapy.
+	?patient  care:tnm_t 3 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.08 . 
+} <= {
+	?patient  care:taken action:Neoadjuvant_chemoradiotherapy.
+	?patient  care:tnm_t 4 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.2 . 
+} <= {
+	?scope e:fail { ?patient  care:taken action:Neoadjuvant_chemoradiotherapy. }.
+	?patient  care:tnm_t 3 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.3 . 
+} <= {
+	?scope e:fail { ?patient  care:taken action:Neoadjuvant_chemoradiotherapy. }.
+	?patient  care:tnm_t 4 .
+}.
+
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.13 . 
+} <= {
+	?scope e:fail { ?patient  care:taken action:Neoadjuvant_chemoradiotherapy. }.
+	?patient  care:taken action:Adjuvant_chemoradiotherapy.
+	?patient  care:taken action:surgery_colon_cancer .
+	?patient  care:tnm_t 3 .
+}.
+
+{
+	?patient  care:post_surgery_5yr_local_relapse_risk 0.18 . 
+} <= {
+	?scope e:fail { ?patient  care:taken action:Neoadjuvant_chemoradiotherapy. }.
+	?patient  care:taken action:adjuvant_chemoradiotherapy.
+	?patient  care:taken action:surgery_colon_cancer .
+	?patient  care:tnm_t 4 .
+}.

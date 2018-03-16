@@ -1,0 +1,19 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+{
+	?SCOPE gps:findpath (
+	{
+		?patient a care:Patient. 
+		?patient care:diagnosis sct:49049000 .	
+		#sct:49049000 Parkinson disease.
+		?patient care:updrs_score ?updrs_score.
+		?updrs_score math:lessThan 10 .
+	} 
+	?PATH ?DURATION ?COST ?BELIEF ?COMFORT ("P180D"^^xsd:dayTimeDuration 500.0 0.25 0.25)).
+
+} => {
+	?patient gps:path (?PATH ?DURATION ?COST ?BELIEF ?COMFORT (?updrs_score)).
+}.

@@ -1,0 +1,76 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+#actions
+
+#Levodopa 
+{
+	care:Parkinson gps:description (
+		{?patient care:updrs_score ?updrs_score.}
+		{?patient gps:medication medication:Levodopa.}
+		{?patient care:updrs_score ?new_value.}
+		action:take_pill_Levodopa 
+		"P60D"^^xsd:dayTimeDuration
+		14.09 
+		0.8
+		0.8
+	)
+} <= {
+	?patient a care:Patient. 
+	?patient care:diagnosis sct:49049000 .	
+	#sct:49049000 Parkinson disease.	
+	?patient care:updrs_score ?updrs_score.
+	?updrs_score math:greaterThan 10.2.
+	(?updrs_score 1.5) math:difference ?new_value.
+}. 
+
+#Pramipexol  
+{
+	care:Parkinson gps:description (
+		{?patient care:updrs_score ?updrs_score.}
+		{?patient gps:medication medication:Pramipexol.}		
+		{?patient care:updrs_score ?new_value.}
+		action:take_pill_Pramipexol  
+		"P60D"^^xsd:dayTimeDuration
+		99.71  
+		0.8
+		0.9
+	)
+} <= {
+	?patient a care:Patient. 
+	?patient care:age ?age . 
+	?age math:lessThan 65 .
+	?patient care:diagnosis sct:49049000 .	
+	#sct:49049000 Parkinson disease.	
+	?patient care:updrs_score ?updrs_score.
+	?updrs_score math:greaterThan 10.2.
+	(?updrs_score 1.3) math:difference ?new_value.
+}. 
+
+
+#Placebo  
+{
+	care:Parkinson gps:description (
+		{?patient care:updrs_score ?updrs_score.}
+		{?patient gps:medication medication:Placebo.}		
+		{?patient care:updrs_score ?new_value.}
+		action:take_pill_Placebo  
+		"P60D"^^xsd:dayTimeDuration
+		1
+		0.8
+		0.8
+	)
+} <= {
+	?patient a care:Patient. 
+	?patient care:diagnosis sct:49049000 .	
+	#sct:49049000 Parkinson disease.
+	?patient care:updrs_score ?updrs_score.
+	?updrs_score math:greaterThan 10.2.
+	(?updrs_score 1.3) math:sum ?new_value.
+}. 

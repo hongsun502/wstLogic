@@ -1,0 +1,16 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+
+
+
+
+gps:CurrentTime gps:value 1517928741 .
+#GMT: Tuesday, February 6, 2018 2:50:41 PM
+
+

@@ -1,0 +1,25 @@
+#Processed by EYE v18.0214.2047 josd
+#eye --nope path/path_adjuvant_chemoradiotherapy-selected.n3 colon-cancer/details/adjuvant_chemoradiotherapy_start_time.ttl engine/gps-temporal-rule.n3 colon-cancer/details/gps-desc-exd.n3 --query engine/gps-temporal-query.n3q
+
+PREFIX data: <http://josd.github.io/fluid/gps/data#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+
+data:patient_1 gps:initialAggregatedPath (((action:Adjuvant_chemoradiotherapy_episode1 1523976633 1525704633.0) gps:start 1523976633 ()) ((action:Adjuvant_chemoradiotherapy_episode1 1523976633 1525704633.0) gps:end 1525704633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode2 1525704633.0 1527432633.0) gps:start 1525704633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode2 1525704633.0 1527432633.0) gps:end 1527432633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode3 1527432633.0 1529160633.0) gps:start 1527432633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode3 1527432633.0 1529160633.0) gps:end 1529160633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode4 1529160633.0 1530888633.0) gps:start 1529160633.0 ()) ((action:Adjuvant_chemoradiotherapy_episode4 1529160633.0 1530888633.0) gps:end 1530888633.0 ())).
+
+#2018-03-15T17:07:27.843Z in=118 out=1 ent=24 step=81 brake=10 inf=130045 sec=0.062 inf/sec=2097500
+#ENDS
+

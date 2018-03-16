@@ -1,0 +1,21 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+
+	{
+		
+		?SCOPE gps:findpath (
+		{
+			?patient gps:alert ?warning .
+		} 
+		?PATH ?DURATION ?COST ?BELIEF ?COMFORT ("P180D"^^xsd:dayTimeDuration 500.0 0.5 0.5)).
+
+		?PATH e:labelvars ?executed_path.
+	} => {
+		?patient gps:warning (?warning ?executed_path).
+	}.		

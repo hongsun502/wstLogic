@@ -1,0 +1,162 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://josd.github.io/fluid#>
+
+
+# mimicing the gps-plugin
+{?patient gps:aggregatedPath ?aggregatedPath.} <= {
+	?patient gps:initialAggregatedPath ?initialAggregatedPath.
+	?SCOPE gps:path_processing (() ?initialAggregatedPath ?aggregatedPath ()).
+}.
+
+{?SCOPE gps:path_processing (?Path ?initialAggregatedPath ?Path ?To_list)} <= {
+	?initialAggregatedPath log:equalTo ().
+	() prolog:cut true.
+}.
+
+
+
+############################################################################
+#actions already executed will be passed without taking any action
+############################################################################
+
+#Start event
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:start ?dueTime ?graph).
+	?path_in gps:head_state gps:Executed.	
+	
+	?path_in list:rest ?path_r.
+	
+	?SCOPE gps:path_processing (?Path_s ?path_r ?Path ?To_list)
+}.	
+
+#End event
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:end ?dueTime ?graph).
+	?path_in gps:head_state gps:Executed.
+
+	?path_in list:rest ?path_r.
+	
+	?SCOPE gps:path_processing (?Path_s ?path_r ?Path ?To_list)
+}.
+
+
+############################################################################
+#Transition being executed
+############################################################################
+
+#Start
+#actions being executed will apply the retraction.
+
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:start ?dueTime ?graph).
+	?path_in gps:head_state gps:Being_Executed.
+	
+	?path_in list:rest ?path_r.
+
+	{?ST gps:description (?From ?Transition ?To ?Action ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+	
+	(?Path_s (((?Action ?start ?end) gps:start ?dueTime ?graph))) list:append ?Path_t.
+
+	?SCOPE e:ignore { ?SCOPE e:call ?From. ?From e:becomes ?Transition. }.
+
+	?SCOPE gps:path_processing (?Path_t ?path_r ?Path ?To_list).
+}.
+
+
+#End
+
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:end ?dueTime ?graph).
+	?path_in gps:head_state gps:Being_Executed.
+	
+	?path_in list:rest ?path_r.
+
+	{?ST gps:description (?From ?Transition ?To ?Action ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+
+	?SCOPE e:call ?Transition.
+	(?Path_s (((?Action ?start ?end) gps:end ?dueTime ?graph))) list:append ?Path_t.
+	?Transition e:becomes ?graph.
+
+	?SCOPE gps:path_processing (?Path_t ?path_r ?Path ?To_list).
+}.
+
+############################################################################
+#Transition to be executed
+############################################################################
+
+#Start
+#actions to be started will apply the FROM->TRANSITION state change and copy the FROM graph.
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:start ?dueTime ?graph).
+	?path_in gps:head_state gps:To_Be_Executed.
+
+	?path_in list:rest ?path_r.
+	{?ST gps:description (?From ?Transition ?To ?Action ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+
+	?SCOPE e:call ?From.
+	?SCOPE e:call ?Where.
+	
+	(?Path_s (((?Action ?start ?end) gps:start ?dueTime ?From))) list:append ?Path_t.
+	?From e:becomes ?Transition.
+
+	(?To_list (((?Action ?start ?end) ?To))) list:append ?new_To_list.
+
+	?SCOPE gps:path_processing (?Path_t ?path_r ?Path ?new_To_list).
+}.
+
+#End
+#actions to be started will apply the TRANSITION->TO state change, and copy the TO graph.
+{?SCOPE gps:path_processing (?Path_s ?path_in ?Path ?To_list)} <= {
+	?path_in list:first ((?Action ?start ?end) gps:end ?dueTime ?graph).
+	?path_in gps:head_state gps:To_Be_Executed.
+	
+	?path_in list:rest ?path_r.
+	{?ST gps:description (?From ?Transition ?To ?Action ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+
+	?To_list list:member ((?Action ?start ?end) ?Defined_To).
+
+	(?Path_s (((?Action ?start ?end) gps:end ?dueTime ?Defined_To))) list:append ?Path_t.
+
+	?Transition e:becomes ?Defined_To.
+
+	?SCOPE gps:path_processing (?Path_t ?path_r ?Path ?To_list).
+}.
+
+
+
+{?path gps:head_state gps:Executed.} <={
+	?path list:first ((?Action ?start ?end) ?state ?dueTime ?graph).
+	gps:CurrentTime gps:value ?T .
+	?T math:rounded ?current_time.
+	?current_time math:notLessThan ?end.
+}.
+
+{?path gps:head_state gps:Being_Executed.} <={
+	?path list:first ((?Action ?start ?end) ?state ?dueTime ?graph).
+	?graph log:notEqualTo ().
+	gps:CurrentTime gps:value ?T .
+	?T math:rounded ?current_time.
+	?current_time math:greaterThan ?start.
+	?current_time math:lessThan ?end.
+}.
+
+{?path gps:head_state gps:To_Be_Executed.} <={
+	?path list:first ((?Action ?start ?end) ?state ?dueTime ()).
+	gps:CurrentTime gps:value ?T .
+	?T math:rounded ?current_time.
+	?current_time math:greaterThan ?start.
+	?current_time math:lessThan ?end.
+}.
+
+{?path gps:head_state gps:To_Be_Executed.} <={
+	?path list:first ((?Action ?start ?end) ?state ?dueTime ?graph).
+	gps:CurrentTime gps:value ?T .
+	?T math:rounded ?current_time.
+	?current_time math:notGreaterThan ?start.
+}.

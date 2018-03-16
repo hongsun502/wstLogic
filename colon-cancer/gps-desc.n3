@@ -1,0 +1,155 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+#Neoadjuvant_chemoradiotherapy
+{
+	care:Colon_cancer gps:description (
+		{
+			?patient care:tumor_size ?size. 
+			?patient care:metastasis_risk ?risk .
+			?patient care:5yr_survival_rate ?rate .
+			?patient care:non_toxicity ?non_toxicity .
+		}
+		{?patient gps:therapy therapy:Neoadjuvant_chemoradiotherapy.}
+		{
+			?patient care:tumor_size ?new_size. 
+			?patient care:metastasis_risk ?new_risk .
+			?patient care:5yr_survival_rate ?new_rate .
+			?patient care:non_toxicity ?new_non_toxicity .
+			?patient care:taken action:Neoadjuvant_chemoradiotherapy.
+		}
+		action:Neoadjuvant_chemoradiotherapy
+		"P50D"^^xsd:dayTimeDuration
+		14147
+		0.9
+		0.5
+	)
+} <= {
+	?patient a care:Patient. 
+	?patient care:diagnosis sct:363406005.
+	?patient care:diagnosis sct:363351006.		###We simplified the test case with rectum cancer.
+
+
+	?patient care:tumor_size ?size.
+	(?size 0.7) math:product ?new_size.
+	
+	?patient  care:metastasis_risk ?risk .
+	(?risk 0.5) math:product ?new_risk.
+	
+	?patient  care:5yr_survival_rate ?rate .
+	#the following calculation is to drop the death rate by 50%. 
+	(1 ((1 ?rate)!math:difference 0.5)!math:product) math:difference ?new_rate.
+	
+	?patient  care:non_toxicity ?non_toxicity .
+	(?non_toxicity 0.73) math:product ?new_non_toxicity.
+	
+
+	?patient  care:tnm_t ?t_value .
+	?t_value math:greaterThan 2 .
+	
+	?scope e:fail {?patient  care:taken action:surgery_colon_cancer}.
+	?scope e:fail {?patient  care:taken action:Neoadjuvant_chemoradiotherapy.}.
+	?scope e:fail {?patient  care:blocking_colon true .}.
+	
+}. 
+
+#surgery
+{
+	care:Colon_cancer gps:description (
+		{
+			?patient  care:tumor_size ?size. 
+			?patient  care:metastasis_risk ?risk .
+			?patient  care:5yr_survival_rate ?rate .
+			?patient  care:non_toxicity ?non_toxicity .
+			?patient  care:5yr_local_relapse_risk ?relapse_risk . 			
+		}
+		{?patient gps:surgery surgery:surgery_colon_cancer.}
+		{
+			?patient  care:tumor_size 0 . 
+			?patient  care:metastasis_risk ?new_risk .
+			?patient  care:5yr_survival_rate ?new_rate .
+			?patient  care:non_toxicity ?new_non_toxicity .
+			?patient  care:taken action:surgery_colon_cancer.
+			?patient  care:5yr_local_relapse_risk ?new_relapse_risk . 			
+		}
+		action:surgery_colon_cancer
+		"P5D"^^xsd:dayTimeDuration
+		20950 
+		0.9
+		0.5
+	)
+} <= {
+	?patient a  care:Patient. 
+	?patient  care:diagnosis sct:363406005.
+	?patient  care:surgery_colon_cancer_precondition true .
+	?scope e:fail {?patient  care:taken action:surgery_colon_cancer.}.
+	
+	?patient  care:post_surgery_5yr_local_relapse_risk ?new_relapse_risk . 	
+	
+	?patient  care:metastasis_risk ?risk .
+	(?risk 0.1) math:product ?new_risk.
+	
+	?patient  care:5yr_survival_rate ?rate .
+	#the following calculation is to drop the death rate by 50%. 
+	(1 ((1 ?rate)!math:difference 0.2)!math:product) math:difference ?new_rate.
+	
+	?patient  care:non_toxicity ?non_toxicity .
+	(?non_toxicity 0.95) math:product ?new_non_toxicity.
+}. 
+
+##Adjuvant_chemoradiotherapy
+{
+	care:Colon_cancer gps:description (
+		{
+			?patient  care:metastasis_risk ?risk .
+			?patient  care:5yr_survival_rate ?rate .
+			?patient  care:non_toxicity ?non_toxicity .
+		}
+		{?patient gps:therapy therapy:Adjuvant_chemoradiotherapy.}
+		{
+			?patient  care:metastasis_risk ?new_risk .
+			?patient  care:5yr_survival_rate ?new_rate .
+			?patient  care:non_toxicity ?new_non_toxicity .
+			?patient  care:taken action:Adjuvant_chemoradiotherapy.
+			?patient  care:5yr_local_relapse_risk ?new_relapse_risk . 
+		}
+		action:Adjuvant_chemoradiotherapy
+		"P80D"^^xsd:dayTimeDuration
+		22635
+		0.9
+		0.4
+	)
+} <= {
+	?patient a  care:Patient. 
+	?patient  care:diagnosis sct:363406005.
+	?patient  care:diagnosis sct:363351006.		###Why do we need to put this restriction?
+	
+	?patient  care:taken action:surgery_colon_cancer .
+	?scope e:fail {?patient  care:taken action:Adjuvant_chemoradiotherapy.}.
+	?scope e:fail {?patient  care:taken action:Neoadjuvant_chemoradiotherapy.}.
+	
+	?patient  care:metastasis_risk ?risk .
+	(?risk 0.5) math:product ?new_risk.
+	
+	?patient  care:5yr_survival_rate ?rate .
+	#the following calculation is to drop the death rate by 50%. 
+	(1 ((1 ?rate)!math:difference 0.5)!math:product) math:difference ?new_rate.
+	
+	?patient  care:non_toxicity ?non_toxicity .
+	(?non_toxicity 0.6) math:product ?new_non_toxicity.
+	
+	?patient  care:tnm_t ?t_value .
+	?t_value math:greaterThan 2 .
+	
+	?patient  care:5yr_local_relapse_risk ?relapse_risk . 
+	(?relapse_risk 0.8) math:product ?new_relapse_risk.
+}. 

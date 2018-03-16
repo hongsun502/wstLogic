@@ -1,0 +1,25 @@
+#Processed by EYE v18.0214.2047 josd
+#eye --nope path/initial-temporal-path-t3-a.n3 colon-cancer/gps-desc.n3 colon-cancer/details/gps-desc-exd.n3 engine/gps-plugin.n3 --query colon-cancer/details/goal_adjuvant_chemoradiotherapy.n3q
+
+PREFIX data: <http://josd.github.io/fluid/gps/data#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+
+data:patient_1 gps:selectedPath ((action:Adjuvant_chemoradiotherapy_episode1 action:Adjuvant_chemoradiotherapy_episode2 action:Adjuvant_chemoradiotherapy_episode3 action:Adjuvant_chemoradiotherapy_episode4) 6912000.0 11320.0 0.96059601 0.40960000000000013).
+
+#2018-02-19T15:05:57.580Z in=201 out=1 ent=1 step=4 brake=2 inf=43884 sec=0.046 inf/sec=954000
+#ENDS
+

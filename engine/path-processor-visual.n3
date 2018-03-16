@@ -1,0 +1,39 @@
+prefix exams: <http://www.agfa.com/w3c/ris/ris-schema/exams#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix schema: <http://schema.org/>
+prefix sct: <http://snomed.info/id/>
+prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix sdv: <http://aca.agfa.net/resource/rules/sdv_eye_components#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://josd.github.io/fluid#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+prefix string: <http://www.w3.org/2000/10/swap/string#>
+
+{
+	?patient gps:aggregatedPath ?aggregatedPath.
+}<={
+	?patient gps:initialAggregatedPath ?aggregatedPath.
+}.
+
+{
+	?patient gps:aggregatedPath ?aggregatedPath.
+	?aggregatedPath list:member ((?Action ?start ?end) ?state ?dueTime ?expected_graph).
+	{?Map gps:description (?From ?Transition ?To ?Action ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+
+	(?Action!log:uri "#") e:stringSplit  ?Action_URI_parts. 
+	?Action_URI_parts list:last ?action_name.
+
+	(?Map!log:uri "#") e:stringSplit  ?Map_URI_parts. 
+	?Map_URI_parts list:last ?map_name.
+
+	(?start_time xsd:dateTime) log:dtlit ?start.
+	(?end_time xsd:dateTime) log:dtlit ?end.
+} => {
+	?patient gps:action (?action_name ?start_time ?end_time ?map_name)
+}.

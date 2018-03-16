@@ -1,0 +1,43 @@
+PREFIX sct: <http://snomed.info/id/>
+PREFIX data: <http://josd.github.io/fluid/gps/data#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+##Parkinson relevant data
+
+data:patient_1 a 				care:Patient. 
+data:patient_1 care:age 		64 . 
+data:patient_1 care:name 		"Jane Doe" . 
+data:patient_1 care:gender 		"female" . 
+data:patient_1 care:weight 		75 . 
+data:patient_1 care:diagnosis 	sct:49049000 .	
+#sct:49049000 Parkinson disease.
+
+#The values below will be used to calculate UPDRS Score
+data:patient_1 care:updrs_cat_8		1 .
+data:patient_1 care:updrs_cat_9		1 .
+data:patient_1 care:updrs_cat_16	1 .
+data:patient_1 care:updrs_cat_23	2 .
+data:patient_1 care:updrs_cat_24	1.5 .
+data:patient_1 care:updrs_cat_25	2 .
+data:patient_1 care:updrs_cat_28	1 .
+data:patient_1 care:updrs_cat_31	1 .
+
+#The score will be calculated by an external rule
+#data:patient_1 care:updrs_score 	10.5.
+	
+##Colon cancer relevant data
+	
+data:patient_1 care:diagnosis 				sct:363406005 .
+#sct:363406005 general colon cancer
+data:patient_1 care:diagnosis 				sct:363351006 .	
+#sct:363351006 indicating rectal cancer.
+data:patient_1 care:tumor_size 				40 .
+data:patient_1 care:metastasis_risk 		0.4 .
+data:patient_1 care:5yr_survival_rate 		0.2 .
+data:patient_1 care:non_toxicity 			1 .
+data:patient_1 care:position 				sct:34402009 .
+#sct:34402009	#rectum [body structure].
+data:patient_1 care:status 					"active" .
+data:patient_1 care:tnm_t 					3 .
+data:patient_1 care:blocking_colon 			false .
+data:patient_1 care:5yr_local_relapse_risk 	0 . 

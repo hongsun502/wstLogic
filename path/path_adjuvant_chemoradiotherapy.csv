@@ -1,0 +1,5 @@
+action_name,start_time,end_time,map_name
+"Adjuvant_chemoradiotherapy_episode1","2018-04-17T14:50:33Z","2018-05-07T14:50:33.0Z","Colon_cancer_a_c"
+"Adjuvant_chemoradiotherapy_episode2","2018-05-07T14:50:33.0Z","2018-05-27T14:50:33.0Z","Colon_cancer_a_c"
+"Adjuvant_chemoradiotherapy_episode3","2018-05-27T14:50:33.0Z","2018-06-16T14:50:33.0Z","Colon_cancer_a_c"
+"Adjuvant_chemoradiotherapy_episode4","2018-06-16T14:50:33.0Z","2018-07-06T14:50:33.0Z","Colon_cancer_a_c"

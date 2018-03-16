@@ -1,0 +1,35 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+{
+	?SCOPE gps:findpath (
+	{
+		?patient a  care:Patient. 
+		?patient  care:diagnosis sct:363406005.
+			
+		?patient  care:tumor_size 0 .
+		
+		?patient  care:metastasis_risk ?risk .
+		?risk math:lessThan 0.1 .
+		
+		?patient  care:5yr_survival_rate ?rate .
+		?rate math:greaterThan 0.7 .
+		
+		?patient  care:non_toxicity ?non_toxicity .
+		?non_toxicity math:greaterThan 0.5 .
+		
+		?patient  care:5yr_local_relapse_risk ?relapse_risk . 			
+		?relapse_risk math:lessThan 0.2 .		
+	} 
+	?PATH ?DURATION ?COST ?BELIEF ?COMFORT ("P150D"^^xsd:dayTimeDuration 50000.0 0.1 0.1)).
+
+} => {
+	?patient gps:path (?PATH ?DURATION ?COST ?BELIEF ?COMFORT (?risk ?rate ?non_toxicity ?relapse_risk) ).
+}.

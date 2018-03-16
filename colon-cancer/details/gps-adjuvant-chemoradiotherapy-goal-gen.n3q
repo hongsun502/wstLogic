@@ -1,0 +1,41 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+prefix sct: <http://snomed.info/id/>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+
+
+
+{
+	?patient gps:initialAggregatedPath ?selectedTemporalPath.
+	
+	?selectedTemporalPath list:member ((action:Adjuvant_chemoradiotherapy ?start ?end) ?state ?time ?graph).
+	
+	
+	{?Map gps:description (?f ?transition ?t action:Adjuvant_chemoradiotherapy ?Duration_n ?Cost_n ?Belief_n ?Comfort_n)} <= ?Where.
+
+	
+	(?Duration_n 2) math:product ?DURATION_LIMIT. 
+	(?Cost_n 2) math:product ?COST_LIMIT. 
+	(?Belief_n 0.5) math:product ?BELIEF_LIMIT. 
+	(?Comfort_n 0.5) math:product ?COMFORT_LIMIT. 
+	
+} => {
+
+		{
+		?SCOPE gps:findpath (
+		{
+			action:Adjuvant_chemoradiotherapy gps:status gps:planned.
+		} 
+		?PATH ?DURATION ?COST ?BELIEF ?COMFORT (?DURATION_LIMIT ?COST_LIMIT ?BELIEF_LIMIT ?COMFORT_LIMIT)).
+	
+	} => {
+		?patient gps:path (?PATH ?DURATION ?COST ?BELIEF ?COMFORT).
+	}.
+
+}.

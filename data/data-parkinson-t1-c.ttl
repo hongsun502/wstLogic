@@ -1,0 +1,24 @@
+PREFIX sct: <http://snomed.info/id/>
+PREFIX data: <http://josd.github.io/fluid/gps/data#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+data:patient_1 a 				care:Patient. 
+data:patient_1 care:age 		64 . 
+data:patient_1 care:name 		"Jane Doe" . 
+data:patient_1 care:gender 		"female" . 
+data:patient_1 care:weight 		75 . 
+data:patient_1 care:diagnosis 	sct:49049000 .	
+#sct:49049000 Parkinson disease.
+
+#The values below will be used to calculate UPDRS Score
+data:patient_1 care:updrs_cat_8		1 .
+data:patient_1 care:updrs_cat_9		1 .
+data:patient_1 care:updrs_cat_16	1 .
+data:patient_1 care:updrs_cat_23	2 .
+data:patient_1 care:updrs_cat_24	1.1 .
+data:patient_1 care:updrs_cat_25	2 .
+data:patient_1 care:updrs_cat_28	1 .
+data:patient_1 care:updrs_cat_31	1 .
+
+#The score will be calculated by an external rule
+#data:patient_1 care:updrs_score 	10.1.

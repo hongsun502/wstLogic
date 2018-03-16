@@ -1,0 +1,43 @@
+#Processed by EYE v18.0214.2047 josd
+#eye --nope data/data-colon-cancer-t3-b.ttl data/t3.ttl parkinson/gps-desc.n3 parkinson/score-calculation.n3 colon-cancer/gps-desc.n3 colon-cancer/gps-knowledge.n3 path/initial-aggreagated-path-t3-b.n3 engine/gps-plugin-aggregated-path-processing.n3 --tactic limited-answer 1 --query engine/gps-aggregation-query.n3q
+
+PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX data: <http://josd.github.io/fluid/gps/data#>
+PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+
+data:patient_1 gps:aggregatedPath (((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:start 1523112741.0 {data:patient_1 care:updrs_score 10.5}) ((action:Neoadjuvant_chemoradiotherapy 1523544633 1527864633.0) gps:start 1523544633 {data:patient_1 care:tumor_size 40 .
+ data:patient_1 care:metastasis_risk 0.4 .
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_survival_rate> 0.2 .
+ data:patient_1 care:non_toxicity 1}) ((action:Neoadjuvant_chemoradiotherapy 1523544633 1527864633.0) gps:end 1527864633.0 {data:patient_1 care:tumor_size 28.0 .
+ data:patient_1 care:metastasis_risk 0.2 .
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_survival_rate> 0.6 .
+ data:patient_1 care:non_toxicity 0.73 .
+ data:patient_1 care:taken action:Neoadjuvant_chemoradiotherapy}) ((action:surgery_colon_cancer 1527864633.0 1528296633.0) gps:start 1527864633.0 {data:patient_1 care:tumor_size 28.0 .
+ data:patient_1 care:metastasis_risk 0.2 .
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_survival_rate> 0.6 .
+ data:patient_1 care:non_toxicity 0.73 .
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_local_relapse_risk> 0}) ((action:surgery_colon_cancer 1527864633.0 1528296633.0) gps:end 1528296633.0 {data:patient_1 care:tumor_size 0 .
+ data:patient_1 care:metastasis_risk 0.020000000000000004 .
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_survival_rate> 0.9199999999999999 .
+ data:patient_1 care:non_toxicity 0.6935 .
+ data:patient_1 care:taken action:surgery_colon_cancer.
+ data:patient_1 <http://josd.github.io/fluid/gps/care#5yr_local_relapse_risk> 0.06}) ((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:end 1528296741.0 {data:patient_1 care:updrs_score 9.2})).
+
+#2018-03-15T17:07:23.131Z in=321 out=1 ent=2 step=2 brake=3 inf=96840 sec=0.046 inf/sec=2105217
+#ENDS
+

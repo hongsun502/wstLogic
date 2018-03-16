@@ -1,0 +1,112 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX : <http://josd.github.io/fluid#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+	
+	
+#generate the un-sorted aggregated path
+{
+	?patient gps:initialAggregatedPath ?path.
+	?scope e:findall (
+		?member
+		{
+			?path list:member ?member.
+		}
+		?list1
+	).
+	?patient gps:aggregatedPath ?path2.
+	?scope e:findall (
+		?member2
+		{
+			?path2 list:member ?member2.
+		}
+		?list2
+	).
+	(?list1 ?list2) list:append ?list.
+} => {
+	?patient gps:unSortedPaths (() ?list).
+}.
+
+	
+#generate the un-sorted aggregated path
+{
+	?patient gps:selectedPath ?solution.
+	?scope e:findall (
+		?event
+		{
+			?patient gps:event ?event.
+		}
+		?list
+	).
+} => {
+	?patient gps:unSortedPaths (() ?list).
+}.	
+	
+	
+	
+	
+#generate the un-sorted aggregated path
+{
+	?patient gps:selectedPath ?solution.
+	?scope e:findall (
+		?event
+		{
+			?patient gps:event ?event.
+		}
+		?list
+	).
+} => {
+	?patient gps:unSortedPaths (() ?list).
+}.
+
+
+#sort the aggregated path 
+
+#start
+{
+	?patient gps:unSortedPaths (?path1 ?path2).
+
+	?path2 log:notEqualTo ().
+	?path2 list:member ((?action ?start_time ?end_time) gps:start ?time ?graph).
+	
+	#there isn't any action ends earlier	
+	?scope e:fail {	?path2 list:member ((?action2 ?start_time2 ?end_time2) ?state ?time2 ?graph2). ?time2 math:lessThan ?time. }.	
+
+	#there isn't any end action ends not later.
+	?scope e:fail {	?path2 list:member ((?action2 ?start_time2 ?end_time2) gps:end ?time2 ?graph2). ?time2 math:notGreaterThan ?time. }.	
+
+	#there isn't any action ends not later, and has an earlier name.
+	?scope e:fail {	?path2 list:member ((?action2 ?start_time2 ?end_time2) ?state ?time2 ?graph2). ?time2 math:notGreaterThan ?time. ?action2 string:lessThan ?action. }.	
+
+	(?path1 (((?action ?start_time ?end_time) gps:start ?time ?graph ))) list:append ?path1_next.
+	(?path2 (((?action ?start_time ?end_time) gps:start ?time ?graph )) ) func:except ?path2_next.
+} =>{?patient gps:unSortedPaths (?path1_next ?path2_next)}.
+	
+	
+#end	
+{
+	?patient gps:unSortedPaths (?path1 ?path2).
+
+	?path2 log:notEqualTo ().
+	?path2 list:member ((?action ?start_time ?end_time) gps:end ?time ?graph).
+	
+
+	#there isn't any action ends earlier	
+	?scope e:fail {	?path2 list:member ((?action2 ?start_time2 ?end_time2) ?state ?time2 ?graph2). ?time2 math:lessThan ?time. }.
+	
+	#there isn't any action ends not later, and has an earlier name.
+	?scope e:fail {	?path2 list:member ((?action2 ?start_time2 ?end_time2) gps:end ?time2 ?graph2). ?time2 math:notGreaterThan ?time. ?action2 string:lessThan ?action. }.	
+
+	(?path1 (((?action ?start_time ?end_time) gps:end ?time ?graph ))) list:append ?path1_next.
+	(?path2 (((?action ?start_time ?end_time) gps:end ?time ?graph )) ) func:except ?path2_next.
+
+} =>{?patient gps:unSortedPaths (?path1_next ?path2_next)}.	
+
+{?patient gps:unSortedPaths (?path ()). } => {?patient gps:initialTemporal_path  ?path. }.

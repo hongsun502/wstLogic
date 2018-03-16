@@ -1,0 +1,204 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX string: <http://www.w3.org/2000/10/swap/string#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX care: <http://josd.github.io/fluid/gps/care#>
+
+
+##Adjuvant_chemoradiotherapy_episode_1
+{
+	care:Colon_cancer_a_c gps:description (
+		{}
+		{}
+		{
+			action:Adjuvant_chemoradiotherapy_episode1 gps:status gps:planned.
+		}
+		action:Adjuvant_chemoradiotherapy_episode1
+		"P20D"^^xsd:dayTimeDuration
+		2830
+		0.99
+		0.8
+	)
+} <= {
+
+	
+	?patient gps:initialAggregatedPath ?selectedTemporalPath.
+	
+	?selectedTemporalPath list:member ((action:Adjuvant_chemoradiotherapy ?start ?end) ?state ?time ?graph).
+	
+	?scope e:fail {action:Adjuvant_chemoradiotherapy_episode1 gps:status gps:planned.}.
+	
+}. 
+
+
+##Adjuvant_chemoradiotherapy_episode_2
+{
+	care:Colon_cancer_a_c gps:description (
+		{}
+		{}
+		{
+			action:Adjuvant_chemoradiotherapy_episode2 gps:status gps:planned.
+		}
+		action:Adjuvant_chemoradiotherapy_episode2
+		"P20D"^^xsd:dayTimeDuration
+		2830
+		0.99
+		0.8
+	)
+} <= {
+	action:Adjuvant_chemoradiotherapy_episode1 gps:status gps:planned.
+	
+	?scope e:fail {action:Adjuvant_chemoradiotherapy_episode2 gps:status gps:planned.}.
+}. 
+
+
+##Adjuvant_chemoradiotherapy_episode_3
+{
+	care:Colon_cancer_a_c gps:description (
+		{}
+		{}
+		{
+			action:Adjuvant_chemoradiotherapy_episode3 gps:status gps:planned.
+		}
+		action:Adjuvant_chemoradiotherapy_episode3
+		"P20D"^^xsd:dayTimeDuration
+		2830
+		0.99
+		0.8
+	)
+} <= {
+	action:Adjuvant_chemoradiotherapy_episode2 gps:status gps:planned.
+	
+	?scope e:fail {action:Adjuvant_chemoradiotherapy_episode3 gps:status gps:planned.}.
+}. 
+
+
+##Adjuvant_chemoradiotherapy_episode_4
+{
+	care:Colon_cancer_a_c gps:description (
+		{}
+		{}
+		{
+			action:Adjuvant_chemoradiotherapy_episode4 gps:status gps:planned.
+		}
+		action:Adjuvant_chemoradiotherapy_episode4
+		"P20D"^^xsd:dayTimeDuration
+		2830
+		0.99
+		0.8
+	)
+} <= {
+	action:Adjuvant_chemoradiotherapy_episode3 gps:status gps:planned.
+	
+	?scope e:fail {action:Adjuvant_chemoradiotherapy_episode4 gps:status gps:planned.}.
+}. 
+
+
+
+## 	The action of action:Adjuvant_chemoradiotherapy is considered as planned when the four episodes are planned.
+##	It is also possible to consider it is planned if the episode 4 is planned.
+##	Ideally, the rule below should be included in the gps_knowledge.n3 file. It is kept here because for readability consideration.
+
+{
+			action:Adjuvant_chemoradiotherapy gps:status gps:planned.
+}<={
+			action:Adjuvant_chemoradiotherapy_episode1 gps:status gps:planned.
+			action:Adjuvant_chemoradiotherapy_episode2 gps:status gps:planned.
+			action:Adjuvant_chemoradiotherapy_episode3 gps:status gps:planned.
+			action:Adjuvant_chemoradiotherapy_episode4 gps:status gps:planned.
+		}.
+
+
+
+		
+		
+		
+		
+##home_visit
+{
+	care:Colon_cancer_a_c_details gps:description (
+		{}
+		{}
+		{
+			action:home_visit gps:status gps:scheduled.
+			action:blood_sample_collection gps:status gps:scheduled.
+			action:anamnese_update gps:status gps:scheduled.
+			action:vital_sign_update gps:status gps:scheduled.
+		}
+		action:home_visit
+		"P0DT2H"^^xsd:dayTimeDuration
+		50
+		0.9
+		0.8
+	)
+} <= {
+	action:home_visit gps:status gps:requested.
+	
+	?scope e:fail {action:home_visit gps:status gps:scheduled.}.
+}. 		
+		
+		
+		
+##blood_sample_processing
+{
+	care:Colon_cancer_a_c_details gps:description (
+		{
+			action:blood_sample_collection gps:status gps:scheduled.
+		}
+		{}
+		{
+			action:blood_sample gps:status gps:expect_processed.
+		}
+		action:blood_sample_process
+		"P0DT12H"^^xsd:dayTimeDuration
+		50
+		0.9
+		0.9
+	)
+} <= {
+	action:blood_sample_collection gps:status gps:scheduled.
+	
+	?scope e:fail {action:blood_sample gps:status gps:expect_processed.}.
+
+}. 			
+		
+		
+		
+		
+##therapy_decision
+{
+	care:Colon_cancer_a_c_details gps:description (
+		{}
+		{}
+		{
+			action:Adjuvant_chemoradiotherapy_decision gps:status gps:scheduled.
+		}
+		action:therapy_decision
+		"P0DT12H"^^xsd:dayTimeDuration
+		50
+		0.9
+		0.9
+	)
+} <= {
+	action:blood_sample gps:status gps:expect_processed.
+	action:anamnese_update gps:status gps:scheduled.
+	action:vital_sign_update gps:status gps:scheduled.
+	
+	?scope e:fail {action:Adjuvant_chemoradiotherapy_decision gps:status gps:scheduled.}.
+}. 			
+		
+				
+		
+{
+	action:Adjuvant_chemoradiotherapy_episode gps:status gps:scheduled
+}<={
+	action:Adjuvant_chemoradiotherapy_decision gps:status gps:scheduled.
+}.		
+		

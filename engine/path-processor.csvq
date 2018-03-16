@@ -1,0 +1,27 @@
+prefix exams: <http://www.agfa.com/w3c/ris/ris-schema/exams#>
+prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+prefix schema: <http://schema.org/>
+prefix sct: <http://snomed.info/id/>
+prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+prefix sdv: <http://aca.agfa.net/resource/rules/sdv_eye_components#>
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+PREFIX log: <http://www.w3.org/2000/10/swap/log#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
+PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://josd.github.io/fluid#>
+prefix xsd: <http://www.w3.org/2001/XMLSchema#>
+
+{
+?scope e:csvTuple (?Action ?start_time ?end_time ?state ?due_time ?graph_retract ?graph_assert).
+}<={
+	?patient gps:aggregatedPath ?aggregatedPath.
+	?aggregatedPath list:member ((?Action ?start ?end) ?state ?dueTime ?expected_graph).
+	[] e:optional {?state log:equalTo gps:start. ?expected_graph log:equalTo ?graph_retract. }.
+	[] e:optional {?state log:equalTo gps:end. ?expected_graph log:equalTo ?graph_assert. }.
+	(?start_time xsd:dateTime) log:dtlit ?start.
+	(?end_time xsd:dateTime) log:dtlit ?end.
+	(?due_time xsd:dateTime) log:dtlit ?dueTime.
+}.
