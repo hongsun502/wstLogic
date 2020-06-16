@@ -12,7 +12,7 @@ PREFIX care: <http://josd.github.io/fluid/gps/care#>
  		e:findall (
 	 		?score
 			{
-				(care:updrs_cat_8 care:updrs_cat_9 care:updrs_cat_16 care:updrs_cat_23 care:updrs_cat_24 care:updrs_cat_25 care:updrs_cat_28 care:updrs_cat_31) list:member ?P
+				(care:updrs_cat_8 care:updrs_cat_9 care:updrs_cat_16 care:updrs_cat_23 care:updrs_cat_24 care:updrs_cat_25 care:updrs_cat_28 care:updrs_cat_31) list:member ?P.
 				?patient ?P ?score.
 			}
 			?list
