@@ -1,25 +1,25 @@
-#Processed by EYE v18.0214.2047 josd
-#eye --nope path/initial-temporal-path-t3-a.n3 colon-cancer/gps-desc.n3 --query colon-cancer/details/gps-adjuvant-chemoradiotherapy-goal-gen.n3q
+#Processed by EYE v20.0910.0008 josd
+#eye --nope ../path/initial-temporal-path-t3-a.n3 ../colon-cancer/gps-desc.n3 --query ../colon-cancer/details/gps-adjuvant-chemoradiotherapy-goal-gen.n3q
 
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
-PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
-PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX : <http://josd.github.io/fluid#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX sct: <http://snomed.info/id/>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
+@prefix sct: <http://snomed.info/id/>.
+@prefix data: <http://josd.github.io/fluid/gps/data#>.
+@prefix care: <http://josd.github.io/fluid/gps/care#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
+@prefix action: <http://josd.github.io/fluid/gps/action#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix therapy: <http://josd.github.io/fluid/gps/therapy#>.
+@prefix surgery: <http://josd.github.io/fluid/gps/surgery#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix : <http://josd.github.io/fluid#>.
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
+@prefix func: <http://www.w3.org/2007/rif-builtin-function#>.
 
 {?U_13 gps:findpath ({action:Adjuvant_chemoradiotherapy gps:status gps:planned} ?U_14 ?U_15 ?U_16 ?U_17 ?U_18 (13824000.0 45270 0.45 0.2))} => {data:patient_1 gps:path (?U_14 ?U_15 ?U_16 ?U_17 ?U_18)}.
 
-#2018-03-15T17:07:26.522Z in=106 out=1 ent=1 step=2 brake=1 inf=26846 sec=0.046 inf/sec=583609
+#2020-09-13T20:20:08.704Z in=5 out=1 ent=1 step=2 brake=1 inf=98742 sec=0.062 inf/sec=1592613
 #ENDS
 

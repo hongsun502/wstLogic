@@ -1,23 +1,23 @@
-#Processed by EYE v18.0214.2047 josd
-#eye --nope data/data-colon-cancer-t3-b.ttl colon-cancer/gps-desc.n3 colon-cancer/gps-knowledge.n3 engine/gps-plugin.n3 --query colon-cancer/gps-query.n3
+#Processed by EYE v20.0910.0008 josd
+#eye --nope ../data/data-colon-cancer-t3-b.ttl ../colon-cancer/gps-desc.n3 ../colon-cancer/gps-knowledge.n3 ../engine/gps-plugin.n3 --query ../colon-cancer/gps-query.n3
 
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
-PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX sct: <http://snomed.info/id/>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
+@prefix sct: <http://snomed.info/id/>.
+@prefix data: <http://josd.github.io/fluid/gps/data#>.
+@prefix care: <http://josd.github.io/fluid/gps/care#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
+@prefix action: <http://josd.github.io/fluid/gps/action#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix therapy: <http://josd.github.io/fluid/gps/therapy#>.
+@prefix surgery: <http://josd.github.io/fluid/gps/surgery#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
 
 data:patient_1 gps:path ((action:Neoadjuvant_chemoradiotherapy action:surgery_colon_cancer) 4752000.0 35097.0 0.81 0.25 (0.020000000000000004 0.9199999999999999 0.6935 0.06)).
 data:patient_1 gps:path ((action:surgery_colon_cancer action:Adjuvant_chemoradiotherapy) 7344000.0 43585.0 0.81 0.2 (0.020000000000000004 0.9199999999999999 0.57 0.16000000000000003)).
 
-#2018-03-15T17:07:19.227Z in=240 out=2 ent=2 step=2 brake=2 inf=36848 sec=0.062 inf/sec=594323
+#2020-09-13T20:20:00.707Z in=47 out=2 ent=2 step=2 brake=2 inf=170488 sec=0.062 inf/sec=2749806
 #ENDS
 

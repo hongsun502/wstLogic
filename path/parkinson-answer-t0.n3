@@ -1,23 +1,23 @@
-#Processed by EYE v18.0214.2047 josd
-#eye --nope data/data-parkinson-t0.ttl parkinson/gps-desc.n3 parkinson/score-calculation.n3 engine/gps-plugin.n3 --query parkinson/gps-goal-parkinson.n3q
+#Processed by EYE v20.0910.0008 josd
+#eye --nope ../data/data-parkinson-t0.ttl ../parkinson/gps-desc.n3 ../parkinson/score-calculation.n3 ../engine/gps-plugin.n3 --query ../parkinson/gps-goal-parkinson.n3q
 
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX sct: <http://snomed.info/id/>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
+@prefix sct: <http://snomed.info/id/>.
+@prefix data: <http://josd.github.io/fluid/gps/data#>.
+@prefix care: <http://josd.github.io/fluid/gps/care#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
+@prefix action: <http://josd.github.io/fluid/gps/action#>.
+@prefix medication: <http://josd.github.io/fluid/gps/medication#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
 
 data:patient_1 gps:path ((action:take_pill_Levodopa action:take_pill_Levodopa) 10368000.0 28.18 0.6400000000000001 0.6400000000000001 (9.0)).
 data:patient_1 gps:path ((action:take_pill_Levodopa action:take_pill_Pramipexol) 10368000.0 113.8 0.6400000000000001 0.7200000000000001 (9.2)).
 data:patient_1 gps:path ((action:take_pill_Pramipexol action:take_pill_Levodopa) 10368000.0 113.8 0.6400000000000001 0.7200000000000001 (9.2)).
 data:patient_1 gps:path ((action:take_pill_Pramipexol action:take_pill_Pramipexol) 10368000.0 199.42 0.6400000000000001 0.81 (9.399999999999999)).
 
-#2018-03-12T09:35:06.289Z in=107 out=4 ent=5 step=10 brake=4 inf=75011 sec=0.062 inf/sec=1209855
+#2020-09-13T20:19:53.363Z in=26 out=4 ent=5 step=10 brake=4 inf=144548 sec=0.078 inf/sec=1853179
 #ENDS
 

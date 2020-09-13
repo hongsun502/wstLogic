@@ -1,25 +1,25 @@
-#Processed by EYE v18.0214.2047 josd
-#eye --nope data/data-parkinson-t0.ttl data/t0.ttl parkinson/gps-desc.n3 parkinson/score-calculation.n3 path/initial-aggregated-path-t0.n3 engine/gps-plugin-aggregated-path-processing.n3 --tactic limited-answer 1 --query engine/gps-aggregation-query.n3q
+#Processed by EYE v20.0910.0008 josd
+#eye --nope ../data/data-parkinson-t0.ttl ../data/t0.ttl ../parkinson/gps-desc.n3 ../parkinson/score-calculation.n3 ../path/initial-aggregated-path-t0.n3 ../engine/gps-plugin-aggregated-path-processing.n3 --tactic limited-answer 1 --query ../engine/gps-aggregation-query.n3q
 
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
-PREFIX sct: <http://snomed.info/id/>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
-PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX math: <http://www.w3.org/2000/10/swap/math#>
-PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX : <http://josd.github.io/fluid#>
-PREFIX log: <http://www.w3.org/2000/10/swap/log#>
-PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX list: <http://www.w3.org/2000/10/swap/list#>
-PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX func: <http://www.w3.org/2007/rif-builtin-function#>
+@prefix sct: <http://snomed.info/id/>.
+@prefix data: <http://josd.github.io/fluid/gps/data#>.
+@prefix care: <http://josd.github.io/fluid/gps/care#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
+@prefix action: <http://josd.github.io/fluid/gps/action#>.
+@prefix : <http://josd.github.io/fluid#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+@prefix string: <http://www.w3.org/2000/10/swap/string#>.
+@prefix medication: <http://josd.github.io/fluid/gps/medication#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
+@prefix func: <http://www.w3.org/2007/rif-builtin-function#>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
 data:patient_1 gps:aggregatedPath (((action:take_pill_Levodopa 1517928741 1523112741.0) gps:start 1517928741 {data:patient_1 care:updrs_score 12}) ((action:take_pill_Levodopa 1517928741 1523112741.0) gps:end 1523112741.0 {data:patient_1 care:updrs_score 10.5}) ((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:start 1523112741.0 {data:patient_1 care:updrs_score 10.5}) ((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:end 1528296741.0 {data:patient_1 care:updrs_score 9.2})).
 
-#2018-03-12T09:35:08.260Z in=152 out=1 ent=2 step=2 brake=3 inf=55799 sec=0.046 inf/sec=1213022
+#2020-09-13T20:19:54.721Z in=33 out=1 ent=2 step=2 brake=3 inf=157370 sec=0.093 inf/sec=1692151
 #ENDS
 
