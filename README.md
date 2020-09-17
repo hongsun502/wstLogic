@@ -112,5 +112,7 @@ Predicting future state for adaptive clinical pathway management, in submission 
 
 ## Contact information
 Hong Sun (hongsun502@gmail.com)
+
 Jos De Roo (josderoo@gmail.com)
+
 Doerthe Arndt (mailandoerthe@gmail.com)
