@@ -2,17 +2,17 @@
 #eye --nope data/data-colon-cancer-t3-a.ttl colon-cancer/gps-desc.n3 colon-cancer/gps-knowledge.n3 engine/gps-plugin.n3 --query colon-cancer/gps-query.n3
 
 PREFIX sct: <http://snomed.info/id/>
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX data: <http://josd.github.io/eye/reasoning/gps/data#>
+PREFIX care: <http://josd.github.io/eye/reasoning/gps/care#>
 PREFIX math: <http://www.w3.org/2000/10/swap/math#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
+PREFIX gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/eye/reasoning/gps/action#>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 PREFIX string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX therapy: <http://josd.github.io/fluid/gps/therapy#>
-PREFIX surgery: <http://josd.github.io/fluid/gps/surgery#>
+PREFIX therapy: <http://josd.github.io/eye/reasoning/gps/therapy#>
+PREFIX surgery: <http://josd.github.io/eye/reasoning/gps/surgery#>
 PREFIX list: <http://www.w3.org/2000/10/swap/list#>
 
 data:patient_1 gps:selectedPath ((action:surgery_colon_cancer action:Adjuvant_chemoradiotherapy) 7344000.0 35097.0 0.81 0.25 (0.020000000000000004 0.9199999999999999 0.57 0.13)).

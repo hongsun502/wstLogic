@@ -9,14 +9,14 @@ PREFIX list: <http://www.w3.org/2000/10/swap/list#>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
 PREFIX prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
+PREFIX gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX : <http://josd.github.io/fluid#>
+PREFIX : <http://josd.github.io/eye/reasoning#>
 prefix xsd: <http://www.w3.org/2001/XMLSchema#>
 prefix string: <http://www.w3.org/2000/10/swap/string#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX activity: <http://josd.github.io/fluid/gps/activity#>
-PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
+PREFIX action: <http://josd.github.io/eye/reasoning/gps/action#>
+PREFIX activity: <http://josd.github.io/eye/reasoning/gps/activity#>
+PREFIX medication: <http://josd.github.io/eye/reasoning/gps/medication#>
 
 {
 	?patient gps:path (?PATH ?DURATION ?COST ?BELIEF ?COMFORT ?INDICATORS).

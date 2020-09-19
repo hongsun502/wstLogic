@@ -1,6 +1,6 @@
 PREFIX sct: <http://snomed.info/id/>
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX data: <http://josd.github.io/eye/reasoning/gps/data#>
+PREFIX care: <http://josd.github.io/eye/reasoning/gps/care#>
 
 data:patient_1 a 				care:Patient. 
 data:patient_1 care:age 		64 . 

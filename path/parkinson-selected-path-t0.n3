@@ -2,14 +2,14 @@
 #eye --nope data/data-parkinson-t0.ttl parkinson/gps-desc.n3 parkinson/score-calculation.n3 engine/gps-plugin.n3 --query parkinson/gps-goal-parkinson.n3q
 
 PREFIX sct: <http://snomed.info/id/>
-PREFIX data: <http://josd.github.io/fluid/gps/data#>
-PREFIX care: <http://josd.github.io/fluid/gps/care#>
+PREFIX data: <http://josd.github.io/eye/reasoning/gps/data#>
+PREFIX care: <http://josd.github.io/eye/reasoning/gps/care#>
 PREFIX math: <http://www.w3.org/2000/10/swap/math#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
-PREFIX gps: <http://josd.github.io/fluid/gps/gps-schema#>
-PREFIX action: <http://josd.github.io/fluid/gps/action#>
-PREFIX medication: <http://josd.github.io/fluid/gps/medication#>
+PREFIX gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>
+PREFIX action: <http://josd.github.io/eye/reasoning/gps/action#>
+PREFIX medication: <http://josd.github.io/eye/reasoning/gps/medication#>
 PREFIX list: <http://www.w3.org/2000/10/swap/list#>
 PREFIX log: <http://www.w3.org/2000/10/swap/log#>
 
