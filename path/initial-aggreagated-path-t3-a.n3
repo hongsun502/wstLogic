@@ -2,22 +2,22 @@
 #eye --nope ../path/initial-temporal-path-t3-a.n3 ../path/aggreagatedPath-t0.n3 ../engine/gps-aggregataion-rule.n3 --query ../engine/gps-temporal-query.n3q
 
 @prefix sct: <http://snomed.info/id/>.
-@prefix data: <http://josd.github.io/fluid/gps/data#>.
-@prefix care: <http://josd.github.io/fluid/gps/care#>.
+@prefix data: <http://josd.github.io/eye/reasoning/gps/data#>.
+@prefix care: <http://josd.github.io/eye/reasoning/gps/care#>.
 @prefix math: <http://www.w3.org/2000/10/swap/math#>.
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
 @prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
-@prefix gps: <http://josd.github.io/fluid/gps/gps-schema#>.
-@prefix action: <http://josd.github.io/fluid/gps/action#>.
+@prefix gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>.
+@prefix action: <http://josd.github.io/eye/reasoning/gps/action#>.
 @prefix log: <http://www.w3.org/2000/10/swap/log#>.
 @prefix string: <http://www.w3.org/2000/10/swap/string#>.
-@prefix therapy: <http://josd.github.io/fluid/gps/therapy#>.
-@prefix surgery: <http://josd.github.io/fluid/gps/surgery#>.
+@prefix therapy: <http://josd.github.io/eye/reasoning/gps/therapy#>.
+@prefix surgery: <http://josd.github.io/eye/reasoning/gps/surgery#>.
 @prefix list: <http://www.w3.org/2000/10/swap/list#>.
-@prefix : <http://josd.github.io/fluid#>.
+@prefix : <http://josd.github.io/eye/reasoning#>.
 @prefix prolog: <http://eulersharp.sourceforge.net/2003/03swap/prolog#>.
 @prefix func: <http://www.w3.org/2007/rif-builtin-function#>.
-@prefix medication: <http://josd.github.io/fluid/gps/medication#>.
+@prefix medication: <http://josd.github.io/eye/reasoning/gps/medication#>.
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
 
 data:patient_1 gps:initialAggregatedPath (((action:take_pill_Levodopa 1517928741 1523112741.0) gps:start 1517928741 {data:patient_1 care:updrs_score 12}) ((action:take_pill_Levodopa 1517928741 1523112741.0) gps:end 1523112741.0 {data:patient_1 care:updrs_score 10.5}) ((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:start 1523112741.0 {data:patient_1 care:updrs_score 10.5}) ((action:surgery_colon_cancer 1523544633 1523976633.0) gps:start 1523544633 ()) ((action:surgery_colon_cancer 1523544633 1523976633.0) gps:end 1523976633.0 ()) ((action:Adjuvant_chemoradiotherapy 1523976633.0 1530888633.0) gps:start 1523976633.0 ()) ((action:take_pill_Pramipexol 1523112741.0 1528296741.0) gps:end 1528296741.0 {data:patient_1 care:updrs_score 9.2}) ((action:Adjuvant_chemoradiotherapy 1523976633.0 1530888633.0) gps:end 1530888633.0 ())).

@@ -1,5 +1,5 @@
 Action,start_time,end_time,state,due_time,graph_retract,graph_assert
-http://josd.github.io/fluid/gps/action#take_pill_Levodopa,"2018-02-06T14:52:21Z","2018-04-07T14:52:21.0Z",http://josd.github.io/fluid/gps/gps-schema#start,"2018-02-06T14:52:21Z",{data:patient_1 care:updrs_score 12},
-http://josd.github.io/fluid/gps/action#take_pill_Levodopa,"2018-02-06T14:52:21Z","2018-04-07T14:52:21.0Z",http://josd.github.io/fluid/gps/gps-schema#end,"2018-04-07T14:52:21.0Z",,{data:patient_1 care:updrs_score 10.5}
-http://josd.github.io/fluid/gps/action#take_pill_Pramipexol,"2018-04-07T14:52:21.0Z","2018-06-06T14:52:21.0Z",http://josd.github.io/fluid/gps/gps-schema#start,"2018-04-07T14:52:21.0Z",{data:patient_1 care:updrs_score 10.5},
-http://josd.github.io/fluid/gps/action#take_pill_Pramipexol,"2018-04-07T14:52:21.0Z","2018-06-06T14:52:21.0Z",http://josd.github.io/fluid/gps/gps-schema#end,"2018-06-06T14:52:21.0Z",,{data:patient_1 care:updrs_score 9.2}
+http://josd.github.io/eye/reasoning/gps/action#take_pill_Levodopa,"2018-02-06T14:52:21Z","2018-04-07T14:52:21.0Z",http://josd.github.io/eye/reasoning/gps/gps-schema#start,"2018-02-06T14:52:21Z",{data:patient_1 care:updrs_score 12},
+http://josd.github.io/eye/reasoning/gps/action#take_pill_Levodopa,"2018-02-06T14:52:21Z","2018-04-07T14:52:21.0Z",http://josd.github.io/eye/reasoning/gps/gps-schema#end,"2018-04-07T14:52:21.0Z",,{data:patient_1 care:updrs_score 10.5}
+http://josd.github.io/eye/reasoning/gps/action#take_pill_Pramipexol,"2018-04-07T14:52:21.0Z","2018-06-06T14:52:21.0Z",http://josd.github.io/eye/reasoning/gps/gps-schema#start,"2018-04-07T14:52:21.0Z",{data:patient_1 care:updrs_score 10.5},
+http://josd.github.io/eye/reasoning/gps/action#take_pill_Pramipexol,"2018-04-07T14:52:21.0Z","2018-06-06T14:52:21.0Z",http://josd.github.io/eye/reasoning/gps/gps-schema#end,"2018-06-06T14:52:21.0Z",,{data:patient_1 care:updrs_score 9.2}
