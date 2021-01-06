@@ -1,0 +1,15 @@
+PREFIX sct: <http://snomed.info/id/>
+PREFIX data: <http://josd.github.io/eye/reasoning/gps/data#>
+PREFIX care: <http://josd.github.io/eye/reasoning/gps/care#>
+PREFIX gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>
+
+
+data:patient_1 a 				care:Patient.
+data:patient_1 care:age 		14 .
+data:patient_1 care:name 		"Jane Doe" .
+data:patient_1 care:gender 		care:Female .
+data:patient_1 care:weight 		75 .
+data:patient_1 care:diagnosis 	sct:49049000 .
+data:patient_1 care:state care:state_2.
+
+#sct:49049000 Parkinson disease.

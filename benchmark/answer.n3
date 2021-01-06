@@ -1,0 +1,48 @@
+#Processed by EYE v20.0910.0008 josd
+#eye --nope data.ttl gps-desc-10000.n3 gps-plugin.n3 --query gps-goal.n3q
+
+@prefix sct: <http://snomed.info/id/>.
+@prefix data: <http://josd.github.io/eye/reasoning/gps/data#>.
+@prefix care: <http://josd.github.io/eye/reasoning/gps/care#>.
+@prefix gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>.
+@prefix math: <http://www.w3.org/2000/10/swap/math#>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+@prefix e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>.
+@prefix action: <http://josd.github.io/eye/reasoning/gps/action#>.
+@prefix medication: <http://josd.github.io/eye/reasoning/gps/medication#>.
+@prefix list: <http://www.w3.org/2000/10/swap/list#>.
+@prefix log: <http://www.w3.org/2000/10/swap/log#>.
+
+data:patient_1 gps:path ((action:take_pill_Medication_1154) 86400.0 68.0 0.8908192094228902 0.5393088388533425).
+data:patient_1 gps:path ((action:take_pill_Medication_1250) 86400.0 20.0 0.9674633478440902 0.7717693712220322).
+data:patient_1 gps:path ((action:take_pill_Medication_1659 action:take_pill_Medication_1739) 172800.0 101.0 0.45359627712573186 0.35136851293289584).
+data:patient_1 gps:path ((action:take_pill_Medication_1659 action:take_pill_Medication_2019) 172800.0 126.0 0.4458480244090971 0.36903342193541344).
+data:patient_1 gps:path ((action:take_pill_Medication_1659 action:take_pill_Medication_2040) 172800.0 169.0 0.41363816352175187 0.5944171260342068).
+data:patient_1 gps:path ((action:take_pill_Medication_1659 action:take_pill_Medication_3876) 172800.0 170.0 0.3956829599050893 0.48632614978247884).
+data:patient_1 gps:path ((action:take_pill_Medication_1659 action:take_pill_Medication_9774) 172800.0 98.0 0.4728658223390881 0.7733751936124891).
+data:patient_1 gps:path ((action:take_pill_Medication_1737 action:take_pill_Medication_9774) 172800.0 113.0 0.35672969935757204 0.5610646354649343).
+data:patient_1 gps:path ((action:take_pill_Medication_1940 action:take_pill_Medication_2019) 172800.0 94.0 0.5210835395580348 0.3583746189330027).
+data:patient_1 gps:path ((action:take_pill_Medication_1940 action:take_pill_Medication_2040) 172800.0 137.0 0.4834383613785544 0.5772485589856465).
+data:patient_1 gps:path ((action:take_pill_Medication_1940 action:take_pill_Medication_3876) 172800.0 138.0 0.46245327107461975 0.47227957752821953).
+data:patient_1 gps:path ((action:take_pill_Medication_1940 action:take_pill_Medication_9774) 172800.0 66.0 0.5526605097489027 0.7510377755205595).
+data:patient_1 gps:path ((action:take_pill_Medication_2969) 86400.0 57.0 0.8849612060508147 0.9184058671708382).
+data:patient_1 gps:path ((action:take_pill_Medication_3020 action:take_pill_Medication_9774) 172800.0 114.0 0.6431484678795029 0.39924819183073523).
+data:patient_1 gps:path ((action:take_pill_Medication_4654) 86400.0 96.0 0.593169685050929 0.5060500882148281).
+data:patient_1 gps:path ((action:take_pill_Medication_5149) 86400.0 38.0 0.6536335667675959 0.6311532383896286).
+data:patient_1 gps:path ((action:take_pill_Medication_6441 action:take_pill_Medication_1739) 172800.0 86.0 0.448550028153045 0.40950462780999797).
+data:patient_1 gps:path ((action:take_pill_Medication_6441 action:take_pill_Medication_2019) 172800.0 111.0 0.4408879745837207 0.43009230633017026).
+data:patient_1 gps:path ((action:take_pill_Medication_6441 action:take_pill_Medication_2040) 172800.0 154.0 0.4090364477163174 0.6927671518677432).
+data:patient_1 gps:path ((action:take_pill_Medication_6441 action:take_pill_Medication_3876) 172800.0 155.0 0.3912809953594736 0.5667918485313379).
+data:patient_1 gps:path ((action:take_pill_Medication_6441 action:take_pill_Medication_9774) 172800.0 83.0 0.4676052000841662 0.9013349493790607).
+data:patient_1 gps:path ((action:take_pill_Medication_7300 action:take_pill_Medication_9774) 172800.0 58.0 0.5860038975008661 0.4010985794968972).
+data:patient_1 gps:path ((action:take_pill_Medication_7717) 86400.0 19.0 0.8616636303994013 0.6981115697245246).
+data:patient_1 gps:path ((action:take_pill_Medication_8442) 86400.0 57.0 0.487979270411259 0.9516351225034313).
+data:patient_1 gps:path ((action:take_pill_Medication_8739) 86400.0 46.0 0.6449042377993427 0.4167790456010711).
+data:patient_1 gps:path ((action:take_pill_Medication_8812 action:take_pill_Medication_9774) 172800.0 106.0 0.8183233464533788 0.35038458833688174).
+data:patient_1 gps:path ((action:take_pill_Medication_9443 action:take_pill_Medication_1618) 172800.0 74.0 0.42229081555889264 0.35344331517968924).
+data:patient_1 gps:path ((action:take_pill_Medication_9443 action:take_pill_Medication_9774) 172800.0 82.0 0.8732622885007663 0.41666248811855255).
+data:patient_1 gps:path ((action:take_pill_Medication_9581 action:take_pill_Medication_9774) 172800.0 33.0 0.36222690689018255 0.43476450479548573).
+
+#2021-01-05T19:49:01.884Z in=10015 out=29 ent=29 step=29 brake=2 inf=325270276 sec=46.390 inf/sec=7011646
+#ENDS
+

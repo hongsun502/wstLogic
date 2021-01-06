@@ -1,0 +1,176 @@
+PREFIX math: <http://www.w3.org/2000/10/swap/math#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX e: <http://eulersharp.sourceforge.net/2003/03swap/log-rules#>
+PREFIX action: <http://josd.github.io/eye/reasoning/gps/action#>
+PREFIX medication: <http://josd.github.io/eye/reasoning/gps/medication#>
+PREFIX sct: <http://snomed.info/id/>
+PREFIX care: <http://josd.github.io/eye/reasoning/gps/care#>
+PREFIX gps: <http://josd.github.io/eye/reasoning/gps/gps-schema#>
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_2.}
+     {?patient gps:medication medication:Medication_0.}
+     {?patient care:state care:state_4.}
+     action:take_pill_Medication_0
+     "P1D"^^xsd:dayTimeDuration
+     57
+     0.7477904055178553
+     0.934831799669019
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_2.}
+     {?patient gps:medication medication:Medication_1.}
+     {?patient care:state care:state_9.}
+     action:take_pill_Medication_1
+     "P1D"^^xsd:dayTimeDuration
+     70
+     0.5152027484597278
+     0.35499402902840843
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_2.}
+     {?patient gps:medication medication:Medication_2.}
+     {?patient care:state care:state_5.}
+     action:take_pill_Medication_2
+     "P1D"^^xsd:dayTimeDuration
+     96
+     0.9681442366905944
+     0.7426727154075693
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_1.}
+     {?patient gps:medication medication:Medication_3.}
+     {?patient care:state care:state_7.}
+     action:take_pill_Medication_3
+     "P1D"^^xsd:dayTimeDuration
+     31
+     0.5660910990739108
+     0.7169792720333495
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_3.}
+     {?patient gps:medication medication:Medication_4.}
+     {?patient care:state care:state_7.}
+     action:take_pill_Medication_4
+     "P1D"^^xsd:dayTimeDuration
+     84
+     0.5835187993156218
+     0.7760823157205528
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Female.
+     ?patient care:age ?age.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_2.}
+     {?patient gps:medication medication:Medication_5.}
+     {?patient care:state care:state_6.}
+     action:take_pill_Medication_5
+     "P1D"^^xsd:dayTimeDuration
+     86
+     0.6351939110847972
+     0.7600626863692657
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_1.}
+     {?patient gps:medication medication:Medication_6.}
+     {?patient care:state care:state_7.}
+     action:take_pill_Medication_6
+     "P1D"^^xsd:dayTimeDuration
+     98
+     0.638190559973025
+     0.8747541994558314
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_2.}
+     {?patient gps:medication medication:Medication_7.}
+     {?patient care:state care:state_7.}
+     action:take_pill_Medication_7
+     "P1D"^^xsd:dayTimeDuration
+     84
+     0.9271417353168782
+     0.6106566931325379
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_1.}
+     {?patient gps:medication medication:Medication_8.}
+     {?patient care:state care:state_10.}
+     action:take_pill_Medication_8
+     "P1D"^^xsd:dayTimeDuration
+     81
+     0.6371636347285053
+     0.6489621573174171
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Male.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
+{care:Parkinson gps:description (
+     {?patient care:state care:state_3.}
+     {?patient gps:medication medication:Medication_9.}
+     {?patient care:state care:state_5.}
+     action:take_pill_Medication_9
+     "P1D"^^xsd:dayTimeDuration
+     75
+     0.7699710306952833
+     0.6403617451988984
+     )
+} <= {
+     ?patient a care:Patient.
+     ?patient care:gender care:Female.
+     ?patient care:age ?age.
+     ?age math:greaterThan 18.
+ }.
+
