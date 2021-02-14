@@ -107,6 +107,9 @@ Download/clone this github project,
 install the EYE reasoning engine following the [install instruction](https://github.com/josd/eye/blob/master/INSTALL), 
 enter the /notebook folder to run the notebooks for the demonstration.
 
+## A quick overview of the demonstration
+Alternatively, it is also possible to download the visualization page from /notebook/GPS4IC-demonstration-visualization.html, and open the file in a browser.
+It is also possible to download the visualization file from ([this link](https://drive.google.com/file/d/1sjgpZvUwT3_EzdmviGSPaAvXYku1iIO5/view))
 ## Publications
 Predicting future state for adaptive clinical pathway management, in submission to Journal of Biomedical Informatics
 
